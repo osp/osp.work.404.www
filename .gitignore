@@ -1,5 +1,6 @@
 {{ project_name }}/media
 {{ project_name }}/public
+local_settings.py
 
 # text-editor / ide files #
 ###########################
