@@ -1,1 +1,16 @@
+{% extends "zinnia/base.html" %}
 
+{% block content %}
+
+{% for object in object_list %}
+
+<div class="entry-title">
+<a href="{{ object.short_url }}">{{ object.title }}</a>
+</div>
+<div class="entry-content">
+    {{ object.content }}
+</div>
+
+{% endfor %}
+
+{% endblock %}

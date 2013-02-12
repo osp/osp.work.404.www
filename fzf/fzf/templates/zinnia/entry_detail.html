@@ -1,1 +1,14 @@
+{% extends "zinnia/base.html" %}
+{% block content %}
 
+<!-- Entry -->
+
+<div class="entry-title">
+{{object.title}}
+</div>
+
+<div class="entry-content">
+{{ object.content|safe }}
+</div>
+
+{% endblock %}
