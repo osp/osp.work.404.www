@@ -1,14 +1,31 @@
 {% extends "zinnia/base.html" %}
 {% block content %}
 
-<!-- Entry -->
-
-<div class="entry-title">
-{{object.title}}
+<div class="entry">
+    <div class="entry-title">
+    {{object.title}}
+    </div>
+    
+    <div class="entry-info">
+        <div class="entry-date">
+        {{ object.creation_date|date:"SHORT_DATE_FORMAT" }}
+        </div>
+        <div class="entry-categories">
+        {% for cat in object.categories.all %}
+        <a class="entry-category" href="{{ cat.get_absolute_url }}">{{cat.title}}</a>
+        {% if not forloop.last %},{% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    {% if object.image %}
+    <img class ="entry-image" src="{{object.image.url}}" width="object.image.width" height="object.image.height" />
+    {% endif %}
+    <div class="entry-content">
+    {{ object.content|urlize }}
+    </div>
 </div>
-
-<div class="entry-content">
-{{ object.content|safe }}
-</div>
-
 {% endblock %}
+
+{% block image %}
+
+{%endblock%}

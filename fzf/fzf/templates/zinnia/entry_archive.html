@@ -1,14 +1,28 @@
 {% extends "zinnia/base.html" %}
-
+{% load rand_arrow %}
 {% block content %}
 
 {% for object in object_list %}
 
-<div class="entry-title">
-<a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
-</div>
-<div class="entry-content">
-{{ object.content|truncatewords_html:32|safe}}
+<div class="entry">
+    <div class="entry-icon">{{ ' '|arrow }}</div>
+    <div class="entry-title">
+    <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+    </div>
+    <div class="entry-info">
+        <div class="entry-date">
+        {{ object.creation_date|date:"SHORT_DATE_FORMAT" }}
+        </div>
+        <div class="entry-categories">
+        {% for cat in object.categories.all %}
+        <a class="entry-category" href="{{ cat.get_absolute_url }}">{{cat.title}}</a>
+        {% if not forloop.last %},{% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    <div class="entry-excerpt">
+    {{object.excerpt}}
+    </div>
 </div>
 
 {% endfor %}
