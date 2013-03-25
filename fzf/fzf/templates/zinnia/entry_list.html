@@ -1,5 +1,6 @@
 {% extends "zinnia/base.html" %}
 {% load rand_arrow %}
+{% load md %}
 {% block content %}
 
 {% for object in object_list %}
@@ -21,7 +22,7 @@
 </div>
 </div>
 <div class="entry-excerpt">
-{{object.excerpt}}
+{{object.excerpt|md}}
 </div>
 </div>
 

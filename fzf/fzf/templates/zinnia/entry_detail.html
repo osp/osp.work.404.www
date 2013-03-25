@@ -1,4 +1,5 @@
 {% extends "zinnia/base.html" %}
+{% load md %}
 {% block content %}
 
 <div class="entry">
@@ -21,7 +22,7 @@
     <img class ="entry-image" src="{{object.image.url}}" width="object.image.width" height="object.image.height" />
     {% endif %}
     <div class="entry-content">
-    {{ object.content|urlize }}
+    {{ object.content|md|urlize }}
     </div>
 </div>
 {% endblock %}
